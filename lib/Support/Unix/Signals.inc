@@ -316,7 +316,7 @@ static bool findModulesAndOffsets(void **StackTrace, int Depth,
 // On glibc systems we have the 'backtrace' function, which works nicely, but
 // doesn't demangle symbols.
 void llvm::sys::PrintStackTrace(raw_ostream &OS) {
-#if defined(HAVE_BACKTRACE) && defined(ENABLE_BACKTRACES)
+#if defined(__GLIBC__) && defined(HAVE_BACKTRACE) && defined(ENABLE_BACKTRACES)
   static void* StackTrace[256];
   // Use backtrace() to output a backtrace on Linux systems with glibc.
   int depth = backtrace(StackTrace,

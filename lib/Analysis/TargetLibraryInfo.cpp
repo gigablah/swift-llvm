@@ -361,14 +361,15 @@ static void initialize(TargetLibraryInfoImpl &TLI, const Triple &T,
   }
 
   // The following functions are available on at least Linux:
-  if (!T.isOSLinux()) {
+  if (!T.isOSLinux())
+    TLI.setUnavailable(LibFunc::memalign);
+  if (1 /*!T.isGlibc()*/) {
     TLI.setUnavailable(LibFunc::dunder_strdup);
     TLI.setUnavailable(LibFunc::dunder_strtok_r);
     TLI.setUnavailable(LibFunc::dunder_isoc99_scanf);
     TLI.setUnavailable(LibFunc::dunder_isoc99_sscanf);
     TLI.setUnavailable(LibFunc::under_IO_getc);
     TLI.setUnavailable(LibFunc::under_IO_putc);
-    TLI.setUnavailable(LibFunc::memalign);
     TLI.setUnavailable(LibFunc::fopen64);
     TLI.setUnavailable(LibFunc::fseeko64);
     TLI.setUnavailable(LibFunc::fstat64);

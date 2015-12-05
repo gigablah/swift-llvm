@@ -120,6 +120,7 @@
 
 #if GTEST_CAN_STREAM_RESULTS_
 # include <arpa/inet.h>  // NOLINT
+# include <sys/socket.h>  // NOLINT
 # include <netdb.h>  // NOLINT
 #endif
 

@@ -101,6 +101,8 @@ computeTargetABI(const Triple &TT, StringRef CPU,
     case llvm::Triple::GNUEABIHF:
     case llvm::Triple::EABIHF:
     case llvm::Triple::EABI:
+    case llvm::Triple::MuslEABI:
+    case llvm::Triple::MuslEABIHF:
       TargetABI = ARMBaseTargetMachine::ARM_ABI_AAPCS;
       break;
     case llvm::Triple::GNU:

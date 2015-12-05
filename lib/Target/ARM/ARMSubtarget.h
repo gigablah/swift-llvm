@@ -391,8 +391,10 @@ public:
   bool isTargetEHABICompatible() const {
     return (TargetTriple.getEnvironment() == Triple::EABI ||
             TargetTriple.getEnvironment() == Triple::GNUEABI ||
+            TargetTriple.getEnvironment() == Triple::MuslEABI ||
             TargetTriple.getEnvironment() == Triple::EABIHF ||
             TargetTriple.getEnvironment() == Triple::GNUEABIHF ||
+            TargetTriple.getEnvironment() == Triple::MuslEABIHF ||
             isTargetAndroid()) &&
            !isTargetDarwin() && !isTargetWindows();
   }
@@ -401,6 +403,7 @@ public:
     // FIXME: this is invalid for WindowsCE
     return TargetTriple.getEnvironment() == Triple::GNUEABIHF ||
            TargetTriple.getEnvironment() == Triple::EABIHF ||
+           TargetTriple.getEnvironment() == Triple::MuslEABIHF ||
            isTargetWindows() || isAAPCS16_ABI();
   }
   bool isTargetAndroid() const { return TargetTriple.isAndroid(); }

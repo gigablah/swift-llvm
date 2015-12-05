@@ -173,6 +173,10 @@ public:
     EABIHF,
     Android,
 
+    Musl,
+    MuslEABI,
+    MuslEABIHF,
+
     MSVC,
     Itanium,
     Cygnus,
